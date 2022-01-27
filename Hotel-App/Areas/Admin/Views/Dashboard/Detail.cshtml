@@ -1,0 +1,66 @@
+﻿@model HotelViewModel
+@{
+    Layout = null;
+}
+
+<h1 class="fs-1 text-center">@Model.Hotel.Name</h1>
+<div class="text-center">
+    <img style="width:500px;" src="~/img/HOTEL/@Model.Hotel.Image" class="rounded mb-4" alt="hotel">
+</div>
+
+<table style="margin:auto;" class="table table-bordered border-primary mb-4">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Hotel.Name</td>
+            <td>@Model.Hotel.Description</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 class="text-center text-danger">Hotel Rooms:</h3>
+
+<table style="margin:auto;" class="table table-bordered border-primary mb-4">
+    <thead>
+        <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Room Type</th>
+            <th scope="col">Adult</th>
+            <th scope="col">Children</th>
+            <th scope="col">Square</th>
+            <th scope="col">Price</th>
+            <th scope="col">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var room in Model.Rooms)
+        {
+            <tr>
+                <td>
+                @foreach (var image in room.RoomImages)
+                {
+                   <img style="width:200px;" src="~/img/@image.ImageName" />
+                }
+                </td>
+                <td>@room.RoomType</td>
+                <td>@room.NumberOfAdult</td>
+                <td>@room.NumberOfChildren</td>
+                <td>@room.Square</td>
+                <td>@room.Price</td>
+                <td>@room.Description</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+
